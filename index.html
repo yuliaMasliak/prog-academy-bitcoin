@@ -11,7 +11,11 @@
       let bitcoinPrice = +prompt("What is Bitcoin price today?");
       let dollarCount = +prompt("How much $ do you have?");
       let count = dollarCount / bitcoinPrice;
-      alert(`You can buy ${count} BTC`);
+      if (isNaN(bitcoinPrice) || isNaN(dollarCount)) {
+        alert("Please, enter a valid values (Number)");
+      } else {
+        alert(`You can buy ${count} BTC`);
+      }
     </script>
   </body>
 </html>
