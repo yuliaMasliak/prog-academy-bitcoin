@@ -5,17 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bitcoin converter</title>
+    <style>
+      .converter {
+        display: block;
+        margin: 40px 60px;
+        padding: 30px;
+        text-align: center;
+        max-width: 300px;
+        border: 2px solid grey;
+        background-color: rgb(231, 243, 250);
+        border-radius: 7px;
+      }
+      h1 {
+        padding: 15px;
+        margin: 50px;
+      }
+    </style>
   </head>
   <body>
+    <h1>Bitcoin Converter</h1>
+    <div class="converter">
+      <h2 id="result">Please enter in pop-up Bitcoin price and $ quantity</h2>
+      <button id="start">Start</button>
+    </div>
+
     <script>
-      let bitcoinPrice = +prompt("What is Bitcoin price today?");
-      let dollarCount = +prompt("How much $ do you have?");
-      let count = dollarCount / bitcoinPrice;
-      if (isNaN(bitcoinPrice) || isNaN(dollarCount)) {
-        alert("Please, enter a valid values (Number)");
-      } else {
-        alert(`You can buy ${count} BTC`);
+      let startButton = document.querySelector("button");
+
+      function startConverter(event) {
+        let bitcoinPrice = prompt("What is Bitcoin price today?");
+        let dollarCount = prompt("How much $ do you have?");
+        let count = dollarCount / bitcoinPrice;
+        let resultMessage = document.querySelector("#result");
+        if (isNaN(bitcoinPrice) || isNaN(dollarCount)) {
+          resultMessage.innerHTML = `Please, enter a valid values (Number)`;
+        } else {
+          resultMessage.innerHTML = `You can buy ${count} BTC`;
+        }
       }
+      startButton.addEventListener("click", startConverter);
     </script>
   </body>
 </html>
